@@ -9,7 +9,7 @@ var storage = multer.diskStorage({
     cb(null, file.originalname);
   }
 })
- 
+var converter = require('converter');
 var upload = multer({ storage: storage })
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 /* GET home page. */
@@ -18,7 +18,6 @@ res.render('fileupload');
 });
 
 router.post('/', upload.any(), function(req, res, next){
-    console.log(req.files);
- res.send(req.files);
+res.send(req.files)
 });
 module.exports = router;
