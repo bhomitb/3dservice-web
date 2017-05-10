@@ -1,5 +1,7 @@
+/* Importing Modules*/
 var express = require('express');
 var router = express.Router();
+var path =  __dirname + '\public\\upload\\images';
 var multer  = require('multer');
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -9,15 +11,45 @@ var storage = multer.diskStorage({
     cb(null, file.originalname);
   }
 })
-var converter = require('converter');
+
 var upload = multer({ storage: storage })
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
+
+/* Functions */
+
+ /* Function to convert 2D to 3D Model*/
+var conv = function(){
+    // var exe = require("child_process").execFile
+    // var spawn = require("child_process").spawn
+    //     exe('VisualSFM', ['sfm+cmp', path , path], (err, stdout, stderr) => {
+    //         if (err) throw err;
+    //         console.log(stdout, stderr);
+       // spawn('cmpmvs.exe',["C:/Users/admin/Desktop/phn/.nvm.cmp/00/mvs.ini"]);
+       console.log('function');
+
+};
+//});
+
+
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
 res.render('fileupload');
 });
 
-router.post('/', upload.any(), function(req, res, next){
-res.send(req.files)
+router.post('/converting', upload.any(), function(req, res, next){
+console.log(req.files);
+conv();
+res.redirect('/loading');
 });
+
+
+router.get('/loading', function(req, res, next) {
+res.render('loading');
+});
+
+
+
+
 module.exports = router;
