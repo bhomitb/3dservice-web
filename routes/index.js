@@ -1,7 +1,7 @@
 /* Importing Modules*/
 var express = require('express');
 var router = express.Router();
-var path =  __dirname + '\public\\upload\\images';
+var path =  __dirname + '/public/upload/images';
 var multer  = require('multer');
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -39,17 +39,10 @@ res.render('fileupload');
 });
 
 router.post('/converting', upload.any(), function(req, res, next){
-console.log(req.files);
-conv();
-res.redirect('/loading');
-});
-
-
-router.get('/loading', function(req, res, next) {
-res.render('loading');
-});
-
-
-
-
+res.send(req.files);
+})
 module.exports = router;
+
+router.post('/data', function(req, res){
+  res.send([{'name':'Bhomit'},{'name':'Akash'},{'name':'Mata'}])
+})
