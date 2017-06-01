@@ -43,6 +43,6 @@ router.post('/converting', upload.any(), function(req, res, next){
   })
 module.exports = router;
 
-router.post('/data', function(req, res){
+router.get('/data', function(req, res){
   res.send([{'name':'Bhomit'},{'name':'Akash'},{'name':'Mata'}])
 })
