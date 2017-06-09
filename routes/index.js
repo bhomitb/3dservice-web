@@ -43,6 +43,6 @@ router.post('/converting', upload.any(), function(req, res, next){
   })
 module.exports = router;
 
-router.get('/data', function(req, res){
-  res.send([{'name':'Bhomit'},{'name':'Akash'},{'name':'Mata'}])
+router.get('/data', function (req, res) {
+    res.sendFile('C:/Users/admin/Downloads/ai.jpg');
 })
