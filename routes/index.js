@@ -16,7 +16,9 @@ var upload = multer({ storage: storage })
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 
 /* Functions */
-
+var done = function(){
+  console.log('Function is working');
+}
  /* Function to convert 2D to 3D Model*/
 var conv = function(){
      var exe = require("child_process").execFile
@@ -37,12 +39,21 @@ router.get('/', function(req, res, next) {
 res.render('fileupload');
 });
 
-router.post('/converting', upload.single('avatar'), function(req, res, next){
+router.post('/uploading', upload.single('avatar'), function(req, res, next){
          res.end("File is uploaded");
+})
+
+router.get('/converting', function(req, res, next){
+   done();
+   res.send('done')    
   //conv();
-  })
-module.exports = router;
+})  
+
+
+
 
 router.get('/data', function (req, res) {
     res.download('C:/Users/Geeta/Downloads/test.ply');
 })
+
+module.exports = router;
