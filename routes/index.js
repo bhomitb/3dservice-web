@@ -37,9 +37,9 @@ router.get('/', function(req, res, next) {
 res.render('fileupload');
 });
 
-router.post('/converting', upload.any(), function(req, res, next){
-  conv();
-  res.send(req.files);
+router.post('/converting', upload.single('avatar'), function(req, res, next){
+         res.end("File is uploaded");
+  //conv();
   })
 module.exports = router;
 
